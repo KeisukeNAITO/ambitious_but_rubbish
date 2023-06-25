@@ -1,0 +1,16 @@
+[Unit]
+Description=Minecraft Server
+After=network-online.target local-fs.target
+
+[Service]
+Type=forking
+User=ec2-user
+Group=ec2-user
+Restart=always
+TimeoutStopSec=300
+WorkingDirectory=/home/ec2-user/minecraft/
+ExecStart=/bin/bash /home/ec2-user/minecraft/minecraft.sh start
+ExecStop=/bin/bash /home/ec2-user/minecraft/minecraft.sh stop
+
+[Install]
+WantedBy=multi-user.target
